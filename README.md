@@ -17,6 +17,7 @@ To get started, just do the following:
 Happy coding!
 The Cloud9 IDE team
 
+thay doi dau tien 3:45
 
 ## Support & Documentation
 
