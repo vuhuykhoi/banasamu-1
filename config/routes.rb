@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
 
+  resources :review_foods
+  resources :follows
+  resources :likes
+  resources :votes
+  resources :comments
+  resources :reviews
+  resources :restaurants
+  resources :foods
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
