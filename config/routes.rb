@@ -8,9 +8,14 @@ Rails.application.routes.draw do
   resources :reviews
   resources :restaurants
   resources :foods
+<<<<<<< HEAD
 
   root 'static_pages#home'
 
+=======
+  get 'users/profile'
+  root 'users#user_my_page'
+>>>>>>> user_profile
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
