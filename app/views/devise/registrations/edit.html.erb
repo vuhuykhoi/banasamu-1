@@ -4,27 +4,10 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<<<<<<< HEAD
-  <div class="field">
-
-    <%= f.label :id %><br />
-    <%= f.number_field :id, autofocus: true, autocomplete: "id" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-=======
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
@@ -34,7 +17,7 @@
         box-shadow: 0 10px 10px -10px #8c8b8b inset;
         } 
     </style>
->>>>>>> interface mypage and profile
+
 
   <div class="container">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
@@ -60,23 +43,7 @@
           </div>-->
           <h3>Personal info</h3>
           <form class="form-horizontal" role="form">
-           <!-- 
-             <div class="field">
-            <#%= f.label :email %><br />
-            <#%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
-          
-            <div class="field">
-              <#%= f.label :password_confirmation %><br />
-              <#%= f.password_field :password_confirmation, autocomplete: "off" %>
-            </div>
-        
-            <div class="field">
-              <#%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-              <#%= f.password_field :current_password, autocomplete: "off" %>
-            </div>
-          
-           -->
+              <!-- email-->
             <div class="form-group">
                <label class="col-lg-3 control-label">Email:</label>
                <div class="col-lg-8">
@@ -87,9 +54,37 @@
              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                 <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
              <% end %>
-             <hr/>
+             
+             <!--name-->
+             <div class="form-group">
+               <label class="col-lg-3 control-label">Name:</label>
+               <div class="col-lg-8">
+                    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+                    </div>
+                    <br/>
+                    </div>
+            <!--id-->
             
+            <div class="form-group">
+               <label class="col-lg-3 control-label">User ID:</label>
+               <div class="col-lg-8">
+                <%= f.number_field :id, autofocus: true, autocomplete: "id" %>
+               </div>
+                <br/>
+            </div>
+            
+            <!--Birthday-->
+             <div class="form-group">
+               <label class="col-lg-3 control-label">Birthday:</label>
+               <div class="col-lg-8">
+                    <%= f.datetime_field :birthday, autofocus: true, autocomplete: "birthday" %>
+               </div>
+                <br/>
+            </div>
+            
+            <hr/>
             <h3>Change password</h3>
+            <!--Password-->
             <div class="form-group">
                <label class="col-lg-3 control-label">Password:</label>
                <div class="col-lg-8">
@@ -102,7 +97,7 @@
                 </div>
                 <br/>
             </div>   
-            
+            <!-- Password confirm-->
             <div class="form-group">
                <label class="col-lg-3 control-label">Password confirmation:</label>
                <div class="col-lg-8">
@@ -111,7 +106,7 @@
                <br/>
               
             </div>
-            
+            <!--Current Password-->
             <div class="form-group">
                <label class="col-lg-3 control-label">Current Password:</label>
                <div class="col-lg-8">
@@ -158,39 +153,3 @@
             </div> 
   <%= link_to "Back", :back %>
 </div>
-
-<<<<<<< HEAD
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  
-    <div class="field">
-    <%= f.label :birthday %><br />
-    <%= f.datetime_field :birthday, autofocus: true, autocomplete: "birthday" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :photo %><br />
-    <%= f.text_field :photo, autofocus: true, autocomplete: "photo" %>
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
-=======
->>>>>>> interface mypage and profile
