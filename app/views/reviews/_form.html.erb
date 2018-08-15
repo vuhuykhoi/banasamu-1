@@ -21,12 +21,20 @@
   </div>
   <div class="field">
     <%= f.label :food_id %><br>
-    <%= f.number_field :food_id %>
+    <%= f.select(:food_id) do %>
+      <% @foods.each do |food| -%>
+        <%= content_tag(:option, food.name, value: food.id) %>
+      <% end %>
+    <% end %>  
   </div>
   <div class="field">
     <%= f.label :restaurant_id %><br>
-    <%= f.number_field :restaurant_id %>
-  </div>
+    <%= f.select(:restaurant_id) do %>
+      <% @restaurants.each do |restaurant| -%>
+        <%= content_tag(:option, restaurant.name, value: restaurant.id) %>
+      <% end %>
+    <% end %>   
+    </div>
   <div class="field">
     <%= f.label :score %><br>
     <%= f.hidden_field :score, id: :score_rating %>
@@ -40,6 +48,7 @@
 
 <script>
 $('#star-rating').raty({
+score: <%= @review.score != nil ? @review.score : 0  %>,
 path: '/assets/',
 click: function(score, e) {
 $("#score_rating").val(score)

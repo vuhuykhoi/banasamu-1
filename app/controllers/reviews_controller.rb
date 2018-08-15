@@ -16,10 +16,16 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+    @foods = Food.all
+    @restaurants = Restaurant.all
   end
 
   # GET /reviews/1/edit
   def edit
+    @review = Review.find_by id: params[:id]
+    @foods = Food.all
+    @restaurants = Restaurant.all
+
   end
 
   # POST /reviews
@@ -29,7 +35,7 @@ class ReviewsController < ApplicationController
         title: params.require(:review).permit(:title)[:title],
         description: params.require(:review).permit(:description)[:description],
         user_id: current_user.id,
-        food_id: params.require(:review).permit(:food_id)[:food_id],
+        food_id: params[:review][:food_id],
         restaurant_id: params.require(:review).permit(:restaurant_id)[:restaurant_id],
         score: params.require(:review).permit(:score)[:score]
       )
