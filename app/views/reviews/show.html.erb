@@ -30,5 +30,20 @@
   <%= @review.score %>
 </p>
 
+<h2>コメントフォーム</h2>
+<%= form_for(@comment) do |f| %> <div class= "field">
+<%= f.label :comment %><br>
+<%= f.text_field :description %>
+<%= f.hidden_field :review_id, :value => @review.id %>
+</div>
+<div class="actions">
+<%= f.submit %> </div>
+<% end %>
+
+<h2>コメント一覧</h2> <ul>
+<% @review.comments.each do |comment|%> <li><%= comment.description %>
+(<i><%= comment.user_id %></i>)</li> <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>
