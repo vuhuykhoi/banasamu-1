@@ -8,13 +8,12 @@
 </head>
 <body>
 <% if user_signed_in? %>
-<h3>Hello, <%= current_user.email %></h3>
+<h6>Hello, <%= current_user.email %></h6>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 <% else %>
 <%= link_to "サインイン", new_user_session_path %>
 <%= link_to "サインアップ", new_user_registration_path %>
 <% end %>
-<hr/>
 <%= yield %>
 
 </body>
