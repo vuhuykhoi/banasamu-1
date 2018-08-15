@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :images
   resources :review_foods
   resources :follows
   resources :likes
