@@ -19,10 +19,6 @@
     <%= f.label :description %><br>
     <%= f.cktext_area :description %>
   </div>
-  <!--<div class="field">-->
-  <!--  <%= f.label :user_id %><br>-->
-  <!--  <%= f.number_field :user_id %>-->
-  <!--</div>-->
   <div class="field">
     <%= f.label :food_id %><br>
     <%= f.number_field :food_id %>
@@ -33,9 +29,20 @@
   </div>
   <div class="field">
     <%= f.label :score %><br>
-    <%= f.number_field :score %>
+    <%= f.hidden_field :score, id: :score_rating %>
+    <div id='star-rating'></div>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
+
+<script>
+$('#star-rating').raty({
+path: '/assets/',
+click: function(score, e) {
+$("#score_rating").val(score)
+}
+});
+</script>

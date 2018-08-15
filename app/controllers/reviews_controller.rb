@@ -25,7 +25,14 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
+    @review = Review.new(
+        title: params.require(:review).permit(:title)[:title],
+        description: params.require(:review).permit(:description)[:description],
+        user_id: current_user.id,
+        food_id: params.require(:review).permit(:food_id)[:food_id],
+        restaurant_id: params.require(:review).permit(:restaurant_id)[:restaurant_id],
+        score: params.require(:review).permit(:score)[:score]
+      )
 
     respond_to do |format|
       if @review.save
@@ -70,6 +77,7 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:title, :description, current_user.id, :food_id, :restaurant_id, :score)
+      
+      params.require(:review).permit(:title, :description, :user_id, :food_id, :restaurant_id, :score)
     end
 end
