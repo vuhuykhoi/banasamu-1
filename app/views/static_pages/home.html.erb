@@ -3,7 +3,7 @@
 <% if user_signed_in? %>
 現在 <b><%= current_user.name %></b>さんがログインしています。
 <br><hr>
-<%= link_to"ログアウト",destroy_user_session_path,method: :delete %>
+<%=link_to "My Page", :controller => :users, :action => :index%>
 <%else%>
 <br>
 <%= link_to"ログイン",new_user_session_path %> 
