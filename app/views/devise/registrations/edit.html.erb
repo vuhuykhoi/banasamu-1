@@ -1,4 +1,5 @@
  <!-- Latest compiled and minified CSS -->
+   
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -10,29 +11,41 @@
   <% end %>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
+   
+ <style>
         hr { 
         height: 10px;
-        border: 0;
+        border: 1;
         box-shadow: 0 10px 10px -10px #8c8b8b inset;
         } 
     </style>
 
-
   <div class="container">
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
-  
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
+        <!--check id of object f <h1><#%= f.object.id %></h1>-->
       <div class="row"> 
         <div class="col-md-3">
             <div class="text-center">
-            
-              <img src="https://res.cloudinary.com/demo/image/upload/w_100,h_100,c_thumb,g_face,r_20,d_avatar.png/non_existing_id.png" class="avatar img-circle" alt="avatar" width="100" height="100">
-              <h6>Upload a different photo...</h6>
+                 <!-- SET ANOTHER PICTURE AVATAR-->
+                
+                <p hidden><%= @image=Image.where(user_id: f.object.id).last%></p>
               
-              <input type="file" class="form-control">
+                <% if @image != nil %>
+                    <%= image_tag @image.file , :class =>"avatar img-circle",:alt =>"avatar",:width =>"180",:height =>"180"%>
+                    <br/><br/>
+                   <%= link_to"Update picture",edit_image_path(@image), class: "btn btn-primary" %> 
+                <%else%>
+                    <img src="https://previews.123rf.com/images/stalkerstudent/stalkerstudent1601/stalkerstudent160101173/50961996-user-icon-vector-flat-design-style-eps-10.jpg" class="avatar img-circle" alt="avatar" width="100" height="100">
+                    <br/><br/>
+                    <%= link_to"Add a new picture",new_image_path, class: "btn btn-primary" %> 
+                  
+                <%end%>
+
             </div>
+           
+        
         </div>
         
         <div class="col-md-9 personal-info">  
@@ -56,21 +69,21 @@
              <% end %>
              
              <!--name-->
-             <div class="form-group">
+            <div class="form-group">
                <label class="col-lg-3 control-label">Name:</label>
                <div class="col-lg-8">
                     <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-                    </div>
-                    <br/>
-                    </div>
+               </div>
+               <br/>
+             </div>
           
             <!--Birthday-->
-             <div class="form-group">
-               <label class="col-lg-3 control-label">Birthday:</label>
-               <div class="col-lg-8">
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Birthday:</label>
+              <div class="col-lg-8">
                     <%= f.datetime_field :birthday, autofocus: true, autocomplete: "birthday" %>
-               </div>
-                <br/>
+              </div>
+              <br/>
             </div>
             
             <hr/>
@@ -82,8 +95,7 @@
                  <i>(leave blank if you don't want to change it)</i><br />
                   <%= f.password_field :password, autocomplete: "off" %>
                   <% if @minimum_password_length %>
-                    <br />
-                    <em><%= @minimum_password_length %> characters minimum</em>
+                    <br/> <em><%= @minimum_password_length %> characters minimum</em>
                   <% end %>
                 </div>
                 <br/>
@@ -95,7 +107,6 @@
                 <%= f.password_field :password_confirmation, autocomplete: "off" %>
                </div>
                <br/>
-              
             </div>
             <!--Current Password-->
             <div class="form-group">
@@ -107,6 +118,8 @@
                <br/>
             </div>    
             
+            
+            <!-- Comfirm Button-->
             <div class="form-group">
               <label class="col-md-3 control-label"></label>
               <div class="col-md-8">
@@ -116,6 +129,7 @@
                  <br/>
               </div>
             </div> 
+            
           </form>
         </div>
       </div>
@@ -128,19 +142,20 @@
       <hr/>
       </div>
   </div>
- 
-           
-            <div class="form-group">
+  
+  
+          <div class="form-group">
               <label class="col-md-3 control-label"></label>
               <div class="col-md-8">
-                    <h3>Cancel my account</h3>
-                   <p>Unhappy? 
+                    <h3>Cancel my account Unhappy?
                    <%= button_to "Cancel my account", 
                    registration_path(resource_name), 
                    data: { confirm: "Are you sure?" }, 
-                   method: :delete %></p>
+                   method: :delete , class: "btn btn-primary"%> </h3>
                  <br/>
               </div>
             </div> 
-  <%= link_to "Back", :back %>
+       
+         <%= link_to "Back", :back , class: "btn btn-primary"%>
+        
 </div>

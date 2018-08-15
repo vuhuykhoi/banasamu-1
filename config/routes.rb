@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :restaurants
   resources :foods
-  resources :users , only: [:index]
+  resources :mypages
   
   root 'static_pages#home'
 

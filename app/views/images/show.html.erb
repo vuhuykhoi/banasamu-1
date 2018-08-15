@@ -2,12 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @image.user.emailra %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @image.title %>
+  <%= @image.user.email %>
 </p>
 
 <p>
@@ -20,5 +15,5 @@
   <%= @image.created_at %>
 </p>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+<%= link_to 'Edit', edit_image_path(@image),class: "btn btn-primary" %> 
+<%= link_to 'Back', edit_user_registration_path ,class: "btn btn-primary"%>
