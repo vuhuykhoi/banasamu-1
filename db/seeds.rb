@@ -7,8 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create! email: "linhttd.bk@gmail.com",
+             name: "Linh1",
              password: "linh123"
 User.create! email: "linh.haenie.bk@gmail.com",
+             name: "Linh2",
              password: "linh123"
 Food.create! name: "Pho"
 Food.create! name: "Bun cha"
