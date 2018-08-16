@@ -1,26 +1,63 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
-<head></head>
+<head>
+	<!-- icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- star -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="default.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <title>home</title>
+  <style>
+    .image {
+			width: 100%;
+			height: 150px;
+		}
+  </style>
+</head>
 <body>
-<div style="overflow:auto">
-  <div class="menu">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-    <a href="#">Link 4</a>
+  <div class="container">
+    <%@reviews.each do |r| %>
+    
+      <h2><%=r.food_id %></h2><br>
+    <h2><%=r.restaurant_id %></h2><br>
+    <h2><%=r.score %></h2>
+    		<div class="row">
+  			<div class="col-3" style="font-size: 44px;">
+  				<img src="https://images.foody.vn/res/g16/150120/prof/s576x330/foody-mobile-12-jpg-361-636169868619281225.jpg" alt="Banh mi chao" class="image">
+  			</div>
+  			<div class="col-9">
+  				<p style="font-size: 26px;"><strong><%=r.title %></strong></p>
+  				<a href="#user" style="margin-left: 10px; font-size: 20px;"><%=current_user.name %></a><br>
+  				<p style="font-size: 22px; max-height: 86px; overflow: hidden;"><%=r.description %></p>
+  				<div class="container">
+  					<div class="row" style="font-size: 20px;">
+  						<div class="col-2">
+  							<i class="fa fa-thumbs-up"></i>
+  							<span style="color: grey"><%= r.likes.count %></span>
+  						</div>
+  						<div class="col-2">
+  							<i class="fa fa-comment"></i>
+  							<span style="color: grey"><%= r.comments.count %></span>
+  						</div>
+  						<div class="col-4">
+  						  
+  							<span class="fa fa-star checked"></span>
+  							<span class="fa fa-star checked"></span>
+  							<span class="fa fa-star checked"></span>
+  							<span class="fa fa-star checked"></span>
+  							<span class="fa fa-star checked"></span>
+  						</div>
+  						<div class="col-3 text-right">
+  							<a href="#seemore"> See more >> </a>
+  						</div>
+  
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+    <% end %>
   </div>
-
-  <div class="main">
-    <h2>Lorum Ipsum</h2>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-  </div>
-
-  <div class="right">
-    <h2>About</h2>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-  </div>
-</div>
-<!--<#link_to "My profile", :controller => :users, :action => :profile%>-->
-<div style="background-color:#e5e5e5;text-align:center;padding:10px;margin-top:7px;">© copyright vuhuykhoi</div>
 </body>
 </html>
