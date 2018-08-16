@@ -5,10 +5,58 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 
+
+<!--NAVBAR-->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<nav class="navbar navbar-webmaster">
+    <div class="container">
+    	<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			
+			</button>
+			<a class="navbar-brand" href="#">バナサム</a>
+		</div>
+	
+		<div class="collapse navbar-collapse" id="navbar">
+			<ul class="nav navbar-nav navbar-right">
+				<% if user_signed_in? %>
+					<li class="active"><h4 style="font-size:12.5px;color:white"><br/>Hello,<%=current_user.email%></h4><span class="sr-only">(current)</span></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" width="22" height="22"><span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><%= link_to "Sign out",destroy_user_session_path, method: :delete %></li>
+							<li><a href="#">...</a></li>
+						</ul>
+					</li>
+				<%else%>
+					<li class="active"><%=link_to "Sign in",new_user_session_path%><span class="sr-only">(current)</span></li>
+					<li class="active"><%=link_to "Sign up",new_user_registration_path%><span class="sr-only">(current)</span></li>
+				<%end%>
+			</ul>
+			
+			<form class="navbar-form navbar-right search-form" role="search">
+				<input type="text" class="form-control" placeholder="Search" />
+			</form>
+		</div>
+	</div>
+</nav>
+
+<div style="padding-left:30px;padding-right:30px">
 <%= yield %>
+</div>
 
 </body>
 </html>

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   
+  
   has_many :reviews
   has_many :votes
   has_many :active_relationships, class_name:  "Follow",
@@ -13,6 +14,7 @@ class User < ActiveRecord::Base
   
   has_many :likes
   has_many :comments
+  has_many :images
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -21,4 +23,5 @@ class User < ActiveRecord::Base
 validates :name,presence: true
 #validates :email,presence: true
 #validates :password,presence: true
+
 end

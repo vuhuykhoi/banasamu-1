@@ -9,6 +9,7 @@
   </div>
 
   <div class="field">
+
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -30,6 +31,12 @@
     <%= f.label :birthday %><br />
     <%= f.datetime_field :birthday, autofocus: true, autocomplete: "birthday" %>
   </div>
+
+  <div class="field">
+    <%= f.label :photo %><br />
+    <%= f.text_field :photo, autofocus: true, autocomplete: "photo" %>
+  </div>
+
 
   <div class="actions">
     <%= f.submit "Sign up" %>
