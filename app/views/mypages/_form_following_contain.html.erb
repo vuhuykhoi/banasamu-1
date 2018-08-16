@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h2>Following</h2>
+        <% @followed_users.each  do |followed| %>
+            <p>People ID: <%= followed.id %></p>
+            <br/>
+        <% end%>
+    </body>
+</html>
