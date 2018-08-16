@@ -17,8 +17,10 @@ Food.create! name: "Bun cha"
 Food.create! name: "Ramen"
 Food.create! name: "Chahan"
 Food.create! name: "Banh my"
-Restaurant.create! name: "AAAA", score: 0
-Restaurant.create! name: "BBBB", score: 0
+Restaurant.create! name: "AAAA", score: 0, photo: "app/assets/images/static_page/restaurant/restaurant1.jpg"
+Restaurant.create! name: "BBBB", score: 0, photo: "app/assets/images/static_page/restaurant/restaurant2.jpg"
+Restaurant.create! name: "Sushi", score: 0, photo: "app/assets/images/static_page/restaurant/restaurant3.jpg"
+Restaurant.create! name: "CCCC", score: 0, photo: "app/assets/images/static_page/restaurant/restaurant4.jpg"
 Review.create!([
                  {user_id: 1,
                   description: "KIRKUS REVIEW
