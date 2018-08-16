@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :food_id %><br>
-    <%= f.select(:food_id) do %>
+    <%= select_tag(:food_id,{:multiple => true, :size => 5}) do %>
       <% @foods.each do |food| -%>
         <%= content_tag(:option, food.name, value: food.id) %>
       <% end %>
