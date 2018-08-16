@@ -2,12 +2,8 @@
 ホーム画面です。
 
 <% if user_signed_in? %>
-
 現在 <b><%= current_user.name %></b>さんがログインしています。
-<br><hr>
-<%=link_to "My Page", :controller => :mypages, :action => :index%>
 <%else%>
-<br>
-<%= link_to"ログイン",new_user_session_path %> 
-<%= link_to"ユーザー登録",new_user_registration_path %>
+    <%= link_to"ログイン",new_user_session_path %> 
+    <%= link_to"ユーザー登録",new_user_registration_path %>
 <%end%>
