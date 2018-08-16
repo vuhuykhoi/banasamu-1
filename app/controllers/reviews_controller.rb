@@ -31,14 +31,17 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
+    @foods = Food.all
+    @restaurants = Restaurant.all
     @review = Review.new(
         title: params.require(:review).permit(:title)[:title],
         description: params.require(:review).permit(:description)[:description],
         user_id: current_user.id,
-        food_id: params[:review][:food_id],
         restaurant_id: params.require(:review).permit(:restaurant_id)[:restaurant_id],
         score: params.require(:review).permit(:score)[:score]
       )
+    @review.foods = Food.find( params.require(:review)[:food_id]) 
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!! \n @review.save = #{@review.save}\n!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
     respond_to do |format|
       if @review.save

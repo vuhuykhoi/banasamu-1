@@ -36,8 +36,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    acts-as-taggable-on (4.0.0)
-      activerecord (>= 4.0)
     arel (6.0.4)
     autoprefixer-rails (9.1.1)
       execjs
@@ -48,6 +46,9 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.3)
     byebug (10.0.2)
     carrierwave (1.2.3)
@@ -193,6 +194,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap
   acts-as-taggable-on
+  bootstrap-sass
   byebug
   carrierwave
   ckeditor

@@ -16,8 +16,10 @@
 </p>
 
 <p>
-  <strong>Food:</strong>
-  <%= Food.find_by(id: @review.food_id).name%>
+  <strong>Food:</strong><br>
+  <% @review.foods.each do |food| %>
+  <%= food.name %><br>
+  <% end %>
 </p>
 
 <p>

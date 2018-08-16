@@ -1,3 +1,9 @@
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<div class="container">
+	<div class="row">
+      <div class="col-lg-12 ">
+        <div class="well well-sm">
 <%= form_for(@review) do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +19,7 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class=>'form-control' %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
@@ -21,7 +27,7 @@
   </div>
   <div class="field">
     <%= f.label :food_id %><br>
-    <%= select_tag(:food_id,{:multiple => true, :size => 5}) do %>
+    <%= f.collection_select(:food_id,@foods,:id,:name,{include_hidden: false},{:multiple => true,:class => "form-control"} ) do %>
       <% @foods.each do |food| -%>
         <%= content_tag(:option, food.name, value: food.id) %>
       <% end %>
@@ -29,7 +35,7 @@
   </div>
   <div class="field">
     <%= f.label :restaurant_id %><br>
-    <%= f.select(:restaurant_id) do %>
+    <%= f.select(:restaurant_id,nil,{},{class: "form-control"}) do %>
       <% @restaurants.each do |restaurant| -%>
         <%= content_tag(:option, restaurant.name, value: restaurant.id) %>
       <% end %>
@@ -41,11 +47,15 @@
     <div id='star-rating'></div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= link_to '戻る', reviews_path,{:class => "btn btn-danger"} %>
+    <%= f.submit nil,{:class => "btn btn-success"} %>
   </div>
 
 <% end %>
 
+</div>
+</div>
+</div>
 <script>
 $('#star-rating').raty({
 score: <%= @review.score != nil ? @review.score : 0  %>,

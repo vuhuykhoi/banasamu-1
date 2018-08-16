@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :foods_reviews
   post '/rate' => 'rater#create', :as => 'rate'
   mount Ckeditor::Engine => '/ckeditor'
   resources :images
