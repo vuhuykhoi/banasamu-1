@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
         restaurant_id: params.require(:review).permit(:restaurant_id)[:restaurant_id],
         score: params.require(:review).permit(:score)[:score]
       )
-    @review.foods = Food.find( params.require(:review)[:food_id]) 
+    @review.foods = Food.find( params.require(:review)[:food_id]) if params.require(:review)[:food_id]
     puts "!!!!!!!!!!!!!!!!!!!!!!!!!! \n @review.save = #{@review.save}\n!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
     respond_to do |format|
