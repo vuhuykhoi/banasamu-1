@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+
+  resources :foods_reviews
+  post '/rate' => 'rater#create', :as => 'rate'
+  mount Ckeditor::Engine => '/ckeditor'
   resources :images
   resources :review_foods
   resources :follows
@@ -15,7 +19,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  # See how all your routes lay out with "rake rroutes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

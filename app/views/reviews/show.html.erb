@@ -7,7 +7,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @review.description %>
+  <%== @review.description %>
 </p>
 
 <p>
@@ -16,18 +16,20 @@
 </p>
 
 <p>
-  <strong>Food:</strong>
-  <%= @review.food_id %>
+  <strong>Food:</strong><br>
+  <% @review.foods.each do |food| %>
+  <%= food.name %><br>
+  <% end %>
 </p>
 
 <p>
   <strong>Restaurant:</strong>
-  <%= @review.restaurant_id %>
+  <%= @review.restaurant.name %>
 </p>
 
 <p>
   <strong>Score:</strong>
-  <%= @review.score %>
+  <div id="score"></div>
 </p>
 
 <h2>コメントフォーム</h2>
@@ -47,3 +49,11 @@
 
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>
+
+<script>
+  $("#score").raty({
+    path: "/assets/",
+    readonly: true,
+    score: <%= @review.score %>
+  });
+</script>

@@ -1,0 +1,2 @@
+module FoodsReviewsHelper
+end
