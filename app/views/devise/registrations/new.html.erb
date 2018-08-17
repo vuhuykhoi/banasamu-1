@@ -1,47 +1,48 @@
-<div class="loginbg">
-  <div class="login-page" style="width: 600px;">
-  	<div class="form" style="max-width: 400px; margin-left: 8%;">
-      <h1 style="text-align: center; margin-bottom: 40px;">Sign up</h1>
-      
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
-      
-        <div class="field">
-          <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-        </div>
-      
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-      
-        <div class="field">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "off" %>
-        </div>
-      
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off" %>
-        </div>
-      
-        <div class="field">
-          <%= f.label :birthday %><br />
-          <%= f.datetime_field :birthday, autofocus: true, autocomplete: "birthday" %>
-        </div>
-      
-        <div class="actions">
-          <%= f.submit "Sign up" %>
-        </div>
-      <% end %>
-        <div style="text-align: center; font-size: 18px;">
-        <%= render "devise/shared/links" %>
-        </div>
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Sign up</title>
+  </head>
   
-  	</div>
-  </div>
-</div>
+  <body>
+    <div class="loginbg">
+      <div class="login-page" style="width: 600px;">
+      	<div class="form" style="max-width: 400px; margin-left: 8%;">
+          <h1 style="text-align: center; margin-bottom: 40px;">Sign up</h1>
+          
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+            <div class="in-form">  
+              <%= f.label :name %><br />
+              <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    
+          
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off" %>
+    
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          
+              <%= f.label :birthday %><br />
+              <%= f.datetime_field :birthday, autofocus: true, autocomplete: "birthday" %>
+            </div>
+            <br>
+            <div class="loginbtn">
+              <%= f.submit "Sign up" %>
+            </div>
+          <% end %>
+            <div style="text-align: center; font-size: 18px;">
+            <%= render "devise/shared/links" %>
+            </div>
+      
+      	</div>
+      </div>
+    </div>
+  </body>
+</html>
