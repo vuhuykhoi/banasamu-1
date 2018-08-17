@@ -1,3 +1,4 @@
 class Food < ActiveRecord::Base
-    has_many :review_foods
+    has_and_belongs_to_many :reviews
+    
 end

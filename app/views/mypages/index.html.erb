@@ -13,52 +13,36 @@
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-
-</style>
 </head>
 
 <body style="font-family:Verdana;color:#aaaaaa;">
+  
+  <div style="background-color:#e5e5e5;padding:5px;text-align:center;">
+      <img src="http://kingtandoori.com/img/banner.jpg"  alt="Smiley face" height="200" width="1300">
+  </div>
 
-<div style="background-color:#e5e5e5;padding:5px;text-align:center;">
-    <img src="http://kingtandoori.com/img/banner.jpg"  alt="Smiley face" height="200" width="1300">
-</div>
-
-<!--<div class="topnav">-->
-<!--  <a class="active" href="#home">Home</a>-->
-<!-- -->
-<!--  <a href="#contact">Contact</a>-->
-<!--  <a href="#about">About</a>-->
+  <div class="contain">
+    <ul class="nav nav-tabs" style="background:#aaff80">
+      <li class="active"><a style="color:black;" data-toggle="tab" href="#home">Home</a></li>
+      <li><a data-toggle="tab" href="#menu1">About</a></li>
+      <li><a data-toggle="tab" href="#menu2">Following</a></li>
+      <li><a data-toggle="tab" href="#menu3">Follower</a></li>
+    </ul>
   
-  
-  
-  
-  
-<!--</div>-->
-
-<div class="contain">
-  <ul class="nav nav-tabs" style="background:#aaff80">
-    <li class="active"><a style="color:black;" data-toggle="tab" href="#home">Home</a></li>
-    <li><a data-toggle="tab" href="#menu1">About</a></li>
-    <li><a data-toggle="tab" href="#menu2">Following</a></li>
-    <li><a data-toggle="tab" href="#menu3">Follower</a></li>
-  </ul>
-
-  <div class="tab-content text-color">
-    <div id="home" class="tab-pane fade ">
-    <br/>
-    <%= render 'form_home_contain'%>
+    <div class="tab-content text-color">
+      <div id="home" class="tab-pane fade ">
+        <br/><%= render 'form_home_contain' %>
     </div>
     <div id="menu1" class="tab-pane fade">
-      <br/>
-      <%= render 'form_user_profile_view' %></div>
-    
-    <div id="menu2" class="tab-pane fade"></div>
-    
-    <div id="menu3" class="tab-pane fade"></div>
+      <br/><%= render 'form_user_profile_view' %>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <br/><%= render 'form_following_contain' %>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+       <br/><%= render 'form_follower_contain' %>
+    </div>
   </div>
-</div>
-
 </body>
 </html>
 
