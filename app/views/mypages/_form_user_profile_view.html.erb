@@ -1,0 +1,85 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+        hr { 
+        height: 10px;
+        border: 1;
+        box-shadow: 0 10px 10px -10px #8c8b8b inset;
+        } 
+</style>
+
+  <div class="container">
+        <!--check id of object f <h1><#%= f.object.id %></h1>-->
+      <div class="row"> 
+        <div class="col-md-3">
+            <div class="text-center">
+                 <!-- SET ANOTHER PICTURE AVATAR-->
+                <p hidden><%= @image=Image.where(user_id: current_user.id).last%></p>
+              <br/>
+                <% if @image != nil %>
+                    <%= image_tag @image.file , :class =>"avatar img-circle",:alt =>"avatar",:width =>"180",:height =>"180"%>
+                <%else%>
+                    <img src="https://previews.123rf.com/images/stalkerstudent/stalkerstudent1601/stalkerstudent160101173/50961996-user-icon-vector-flat-design-style-eps-10.jpg" class="avatar img-circle" alt="avatar" width="100" height="100">
+                <%end%>
+            </div>
+        </div>
+    
+        <div class="col-md-9 personal-info">  
+          <h2>Personal info   <%= link_to "", edit_user_registration_path ,class:"glyphicon glyphicon-pencil" %>
+            </h2>
+          <form class="form-horizontal" role="form">
+              <!-- email-->
+            <div class="form-group">
+               <label class="col-lg-3 control-label">Email:</label>
+               <div class="col-lg-8">
+                <h3 class="user_infomation_text"><%=current_user.email%></h3>
+               </div>
+               <br/>
+            </div>
+             <!--name-->
+            <div class="form-group">
+               <label class="col-lg-3 control-label">Name:</label>
+               <div class="col-lg-8">
+                   <h3 class="user_infomation_text"><%=current_user.name%></h3>
+               </div>
+               <br/>
+             </div>
+          
+            <!--Birthday-->
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Birthday:</label>
+              <div class="col-lg-8">
+                   <h3 class="user_infomation_text"><%=current_user.birthday%></h3>
+              </div>
+              <br/>
+            </div>
+            
+            <hr/>
+           
+            <!-- Comfirm Button-->
+            <!--<div class="form-group">-->
+            <!--  <label class="col-md-3 control-label"></label>-->
+            <!--  <div class="col-md-8">-->
+            <!--    <div class="actions">-->
+          
+            <!--    </div>-->
+            <!--     <br/>-->
+            <!--  </div>-->
+            <!--</div> -->
+            
+          </form>
+        </div>
+      </div>
+      
+  
+  <!--<div class="form-group">-->
+  <!--    <label class="col-md-3 control-label"></label>-->
+  <!--    <div class="col-md-9">-->
+  <!--    <hr/>-->
+  <!--    </div>-->
+  <!--</div>-->
+</div>

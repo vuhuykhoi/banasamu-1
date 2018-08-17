@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
-=======
 
   mount Ckeditor::Engine => '/ckeditor'
->>>>>>> create_review
+  resources :images
   resources :review_foods
   resources :follows
   resources :likes
@@ -13,7 +11,8 @@ Rails.application.routes.draw do
   resources :reviews
   resources :restaurants
   resources :foods
-
+  resources :mypages
+  
   root 'static_pages#home'
 
   devise_for :users
