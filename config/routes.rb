@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :foods
   resources :mypages
   root 'static_pages#home'
+  match "/friend_users/:id" => "friend_users#show"
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
