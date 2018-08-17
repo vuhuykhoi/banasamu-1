@@ -14,22 +14,23 @@
 			width: 100%;
 			height: 150px;
 		}
+		hr{
+		  width: 80%;
+		}
   </style>
 </head>
 <body>
   <div class="container">
     <%@reviews.each do |r| %>
-    
-      <h2><%=r.food_id %></h2><br>
-    <h2><%=r.restaurant_id %></h2><br>
-    <h2><%=r.score %></h2>
+    <br>
     		<div class="row">
-  			<div class="col-3" style="font-size: 44px;">
+  			<div class="col-3" style="font-size: 22px; text-align: center;">
   				<img src="https://images.foody.vn/res/g16/150120/prof/s576x330/foody-mobile-12-jpg-361-636169868619281225.jpg" alt="Banh mi chao" class="image">
+  			  <a href="#"><%= r.restaurant.name %></a>
   			</div>
   			<div class="col-9">
   				<p style="font-size: 26px;"><strong><%=r.title %></strong></p>
-  				<a href="#user" style="margin-left: 10px; font-size: 20px;"><%=current_user.name %></a><br>
+  				<a href="" style="margin-left: 10px; font-size: 20px;"><%=current_user.name %></a><br>
   				<p style="font-size: 22px; max-height: 86px; overflow: hidden;"><%=r.description %></p>
   				<div class="container">
   					<div class="row" style="font-size: 20px;">
@@ -42,12 +43,12 @@
   							<span style="color: grey"><%= r.comments.count %></span>
   						</div>
   						<div class="col-4">
-  						  
+  						  <% r.score.times do %>
   							<span class="fa fa-star checked"></span>
-  							<span class="fa fa-star checked"></span>
-  							<span class="fa fa-star checked"></span>
-  							<span class="fa fa-star checked"></span>
-  							<span class="fa fa-star checked"></span>
+  							<% end %>
+  							<% (5-r.score).times do %>
+  							<span class="fa fa-star"></span>
+  							<% end %>
   						</div>
   						<div class="col-3 text-right">
   							<a href="#seemore"> See more >> </a>
@@ -57,6 +58,7 @@
   				</div>
   			</div>
   		</div>
+  		<br><hr>
     <% end %>
   </div>
 </body>
