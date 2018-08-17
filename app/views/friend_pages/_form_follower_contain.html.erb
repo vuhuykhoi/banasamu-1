@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>           <!------ Include the above in your HEAD tag ---------->
+<head>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
 </head>
     <body>
         <a href="http://bootsnipp.com/mouse0270/snippets/4l0k2" class="btn btn-danger hide" id="back-to-bootsnipp">Back to Bootsnipp</a>
@@ -25,13 +26,8 @@
                                 <div class="col-xs-12 col-sm-9">
                                     <span class="name"><%=follower.name%></span><br/>
                                     <p><span class="glyphicon glyphicon-envelope c-info"><%=follower.email%></span></p>
-                                    
                                     <!--<span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="5842 Hillcrest Rd"></span>-->
                                     <!--<span class="visible-xs"> <span class="text-muted">5842 Hillcrest Rd</span><br/></span>-->
-                                    <!--<span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="(870) 288-4149"></span>-->
-                                    <!--<span class="visible-xs"> <span class="text-muted">(870) 288-4149</span><br/></span>-->
-                                    <!--<span class="glyphicon glyphicon-envelope" data-toggle="tooltip" title="scott.stevens@example.com"></span>-->
-                                    <!--<span class="visible-xs"> <span class="text-muted">scott.stevens@example.com</span><br/></span>-->
                                 </div>
                                   <td><%= link_to "Visit", my_friend_pages_path(follower.id) ,class:"btn btn-primary"%></td>
                                 <div class="clearfix"></div>

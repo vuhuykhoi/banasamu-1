@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <!------ Include the above in your HEAD tag ---------->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            <!------ Include the above in your HEAD tag ---------->
     </head>
     <body>
         <a href="http://bootsnipp.com/mouse0270/snippets/4l0k2" class="btn btn-danger hide" id="back-to-bootsnipp">Back to Bootsnipp</a>
@@ -15,30 +15,26 @@
                             <% @followed_users.each  do |followed| %>
                             <li class="list-group-item">
                                 <div class="col-xs-12 col-sm-3">
-                                    <p hidden><%= @image=Image.where(user_id: followed.id).last%></p>
+                                    <p><% @image=Image.where(user_id: followed.id).last%></p>
                                     <% if @image != nil %>
                                         <%= image_tag @image.file , :class =>"avatar img-circle",:alt =>"avatar",:width =>"100",:height =>"100"%>
                                     <%else%>
-                                        <img src="https://previews.123rf.com/images/stalkerstudent/stalkerstudent1601/stalkerstudent160101173/50961996-user-icon-vector-flat-design-style-eps-10.jpg" class="avatar img-circle" alt="avatar" width="100" height="100">
+                                      	<%= image_tag(url_for("100.png"),:class =>"avatar img-circle",:alt =>"avatar",:width =>"100",:height =>"100") %>
                                      <%end%>
                                 </div>
                                 
                                 <div class="col-xs-12 col-sm-9">
                                     <span class="name"><%=followed.name%></span><br/>
                                     <p><span class="glyphicon glyphicon-envelope c-info"><%=followed.email%></span></p>
-                                    
                                     <!--<span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="5842 Hillcrest Rd"></span>-->
                                     <!--<span class="visible-xs"> <span class="text-muted">5842 Hillcrest Rd</span><br/></span>-->
-                                    <!--<span class="glyphicon glyphicon-earphone text-muted c-info" data-toggle="tooltip" title="(870) 288-4149"></span>-->
-                                    <!--<span class="visible-xs"> <span class="text-muted">(870) 288-4149</span><br/></span>-->
-                                    <!--<span class="glyphicon glyphicon-envelope" data-toggle="tooltip" title="scott.stevens@example.com"></span>-->
-                                    <!--<span class="visible-xs"> <span class="text-muted">scott.stevens@example.com</span><br/></span>-->
                                 </div>
                                 
                                 <div class ="col-xs-12 col-sm-9">
                                 <!--<#%follow = [current_user.id,followed.id]%>-->
                                 <!--<#%= link_to 'Unfollow', follow, method: :delete, data: { confirm: 'Are you sure?' } %>-->
                                 <%= link_to 'Unfollow',:controller => :follows, :method => :destroy,class:"btn btn-primary"%>
+                                <td><%= link_to "Visit", my_friend_pages_path(followed.id) ,class:"btn btn-primary"%></td>
                                 </div>
                                 <div class="clearfix"></div>
                             </li>

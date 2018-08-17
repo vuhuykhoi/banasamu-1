@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
  
 
-  resources :friend_users
+  get 'friend_pages/:id' =>"friend_pages#index", as: :my_friend_pages
+
+  resources :friend_pages
   resources :foods_reviews
   post '/rate' => 'rater#create', :as => 'rate'
   mount Ckeditor::Engine => '/ckeditor'
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   resources :foods
   resources :mypages
   root 'static_pages#home'
-  match "/friend_users/:id" => "friend_users#show"
+ 
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
