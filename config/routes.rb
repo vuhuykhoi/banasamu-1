@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+ 
 
-
+  resources :friend_users
   resources :foods_reviews
   post '/rate' => 'rater#create', :as => 'rate'
   mount Ckeditor::Engine => '/ckeditor'
@@ -14,7 +15,6 @@ Rails.application.routes.draw do
   resources :restaurants
   resources :foods
   resources :mypages
-  
   root 'static_pages#home'
 
   devise_for :users
