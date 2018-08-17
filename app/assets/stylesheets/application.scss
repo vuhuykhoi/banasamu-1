@@ -15,9 +15,9 @@
  */
  
 .search input[type=text] {
-	position: absolute;
+	position: fixed;
 	top: 10px;
-	left: 90px;
+	left: 10px;
     width: 30px;
     box-sizing: border-box;
     border: 2px solid #ABB2B9;
@@ -29,7 +29,7 @@
     background-position: 4px 4px; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 25px;
-
+    z-index: 999;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
@@ -43,52 +43,56 @@
 }
 
 .logoimg{
-	position: absolute;
+	position: fixed;
 	top: 10px;
-	left: 10px;
-	height: 41px;
-	width: 70px;
+	right: 13px;
+	height: 60px;
 	border: 2px solid #ABB2B9;
 	border-radius: 4px;
+	z-index: 999;
+	background-color: #efe4b0;
 }
 .logoimg:hover{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-#mySidenav span {
-    position: absolute;
-    right: -110px;
+#mySidenav a {
+    position: fixed;
+    right: -70px;
     transition: 0.3s;
     padding: 15px;
-    width: 150px;
+    width: 90px;
     text-decoration: none;
     font-size: 20px;
     color: white;
     border-radius: 5px 0 0 5px;
+    z-index: 999;
 }
 
-#mySidenav span:hover {
+#mySidenav a:hover, #mySidenav a:active, #mySidenav a:focus  {
     right: 0;
 }
 
 #green {
-    top: 20px;
+    top: 80px;
     background-color: #4CAF50;
 }
 
 #blue {
-    top: 80px;
+    top: 140px;
     background-color: #2196F3;
 }
 
 #red {
-    top: 140px;
+    top: 200px;
     background-color: #f44336;
 }
 
 #black {
-    top: 200px;
+    top: 260px;
     background-color: #555
 }
+
+
 
 .user_infomation_text{
      font-size: 15px;
@@ -97,4 +101,8 @@
 		font-family: 'Sawarabi Mincho', sans-serif;
 		font-weight: bold;
 		font-size:40px !important
+}
+
+.container{
+    padding: 15px;
 }

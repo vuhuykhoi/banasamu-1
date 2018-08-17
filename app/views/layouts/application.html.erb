@@ -15,25 +15,6 @@
 	  		<input id="search" type="text" name="search" placeholder="Search....">
 		</span>
 		
-		<div id="mySidenav" class="sidenav">
-		<% if user_signed_in? %>
-			<p hidden><% @image=Image.where(user_id: current_user.id).last%></p>
-            <!--image issue-->
-            <% if @image != nil %>
-                <span id="green"><%= image_tag @image.file , :class =>"avatar img-circle",:alt =>"avatar",:width =>"22",:height =>"22"%> <%=link_to "My Page", mypages_path%></span>
-            <%else%>
-                <span id="green"><img src="ava-null.jpg" class="avatar img-circle" alt="avatar" width="22" height="22"> <%=link_to "My Page", mypages_path%></span>
-            <%end%>
-			
-			<span id="blue">other</span>
- 			<span href="#" id="red">other</span>
-			<span id="black"><%= link_to "Sign out",destroy_user_session_path, method: :delete %></span>
-			
-		<%else%>
-					<span id="green"><%=link_to "Sign in",new_user_session_path%></span>
-					<span id="blue"><%=link_to "Sign up",new_user_registration_path%></span>
-		<%end%>
-		
 <%= yield %>
 
 
