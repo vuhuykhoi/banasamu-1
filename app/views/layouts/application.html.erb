@@ -8,9 +8,12 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+<link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
 </head>
 <body>
+	<style>
+	
+	</style>
 <!--NAVBAR-->
 <nav class="navbar navbar-webmaster">
     <div class="container">
@@ -20,9 +23,8 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
-			
 			</button>
-			<a class="navbar-brand" href="#">バナサム</a>
+		  <%=link_to "バナサム",root_path,:class =>"navbar-brand font-brand"%></span>
 		</div>
 	
 		<div class="collapse navbar-collapse" id="navbar">
@@ -48,7 +50,7 @@
 							<li><a href="#">...</a></li>
 						</ul>
 					</li>
-					<li class="active"><%=link_to "Home",root_path%><span class="sr-only">(current)</span></li>
+					
 				<%else%>
 					<li class="active"><h1 style="font-size:12.5px;color:white">Do you have an account?</h1><span class="sr-only">(current)</span></li>
 					<li class="active"><%=link_to "Sign in",new_user_session_path%><span class="sr-only">(current)</span></li>
