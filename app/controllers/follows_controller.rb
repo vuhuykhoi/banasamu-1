@@ -24,11 +24,14 @@ class FollowsController < ApplicationController
   # POST /follows
   # POST /follows.json
   def create
-    @follow = Follow.new(follow_params)
+    @follow = Follow.new(
+      follower_id: current_user.id,
+      followed_id: params[:followed_id]
+      )
 
     respond_to do |format|
       if @follow.save
-        format.html { redirect_to @follow, notice: 'Follow was successfully created.' }
+        format.html { redirect_to "/mypages", notice: 'Follow was successfully created.' }
         format.json { render :show, status: :created, location: @follow }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class FollowsController < ApplicationController
   def update
     respond_to do |format|
       if @follow.update(follow_params)
-        format.html { redirect_to @follow, notice: 'Follow was successfully updated.' }
+        format.html { redirect_to "/mypages", notice: 'Follow was successfully updated.' }
         format.json { render :show, status: :ok, location: @follow }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class FollowsController < ApplicationController
   def destroy
     @follow.destroy
     respond_to do |format|
-      format.html { redirect_to follows_url, notice: 'Follow was successfully destroyed.' }
+      format.html { redirect_to "/mypages", notice: 'Follow was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,7 +70,4 @@ class FollowsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def follow_params
-      params.require(:follow).permit(:follower_id, :followed_id)
-    end
 end
