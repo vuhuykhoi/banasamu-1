@@ -1,0 +1,5 @@
+<% if current_user.following?(follower) %>
+    <%= render 'unfollow.html.erb',follower:follower %>
+<% else %>
+    <%= render 'follow.html.erb',follower:follower %>
+<% end %>
