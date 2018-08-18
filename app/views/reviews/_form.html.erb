@@ -1,67 +1,68 @@
-<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <div class="container">
-	<div class="row">
-      <div class="col-lg-12 ">
-        <div class="well well-sm">
-<%= form_for(@review) do |f| %>
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+  <div class="row">
+    <div class="col-lg-12 ">
+      <div class="well well-sm">
+        <%= form_for(@review) do |f| %>
+          <% if @review.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-      <ul>
-      <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+              <ul>
+                <% @review.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= f.label :title %><br>
+            <%= f.text_field :title, :class => 'form-control' %>
+          </div>
+          <div class="field">
+            <%= f.label :description %><br>
+            <%= f.cktext_area :description %>
+          </div>
+          <div class="field">
+            <%= f.label :food_id %><br>
+            <%= f.collection_select(:food_id, @foods, :id, :name, {include_hidden: false}, {:multiple => true, :class => "form-control"}) do %>
+              <% @foods.each do |food| -%>
+                <%= content_tag(:option, food.name, value: food.id) %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="field">
+            <%= f.label :restaurant_id %><br>
+            <%= f.select(:restaurant_id, nil, {}, {class: "form-control"}) do %>
+              <% @restaurants.each do |restaurant| -%>
+                <%= content_tag(:option, restaurant.name, value: restaurant.id) %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="field">
+            <%= f.label :score %><br>
+            <%= f.hidden_field :score, id: :score_rating %>
+            <div id='star-rating'></div>
+          </div>
+          <div class="actions">
+            <%= link_to '戻る', reviews_path, {:class => "btn btn-danger"} %>
+            <%= f.submit nil, {:class => "btn btn-success"} %>
+          </div>
+
+        <% end %>
+
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, :class=>'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.cktext_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :food_id %><br>
-    <%= f.collection_select(:food_id,@foods,:id,:name,{include_hidden: false},{:multiple => true,:class => "form-control"} ) do %>
-      <% @foods.each do |food| -%>
-        <%= content_tag(:option, food.name, value: food.id) %>
-      <% end %>
-    <% end %>  
-  </div>
-  <div class="field">
-    <%= f.label :restaurant_id %><br>
-    <%= f.select(:restaurant_id,nil,{},{class: "form-control"}) do %>
-      <% @restaurants.each do |restaurant| -%>
-        <%= content_tag(:option, restaurant.name, value: restaurant.id) %>
-      <% end %>
-    <% end %>   
-    </div>
-  <div class="field">
-    <%= f.label :score %><br>
-    <%= f.hidden_field :score, id: :score_rating %>
-    <div id='star-rating'></div>
-  </div>
-  <div class="actions">
-    <%= link_to '戻る', reviews_path,{:class => "btn btn-danger"} %>
-    <%= f.submit nil,{:class => "btn btn-success"} %>
-  </div>
-
-<% end %>
-
-</div>
-</div>
 </div>
 <script>
-$('#star-rating').raty({
-score: <%= @review.score != nil ? @review.score : 0  %>,
-path: '/assets/',
-click: function(score, e) {
-$("#score_rating").val(score)
-}
-});
+    $('#star-rating').raty({
+        score: <%= @review.score != nil ? @review.score : 0  %>,
+        path: '/assets/',
+        click: function (score, e) {
+            $("#score_rating").val(score)
+        }
+    });
 </script>

@@ -2,7 +2,6 @@
     color: black!important
 }
 
-
 .checked {
     color: orange!important;
 }
@@ -15,4 +14,84 @@
 .c-info {
     padding: 5px 10px;
     font-size: 1.25em;
+}
+
+#mypage {
+  .review-restaurant, .review-user {
+    font-size: 15px;
+    color: black;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .review-title {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .review-description {
+    margin-top: 5px;
+    font-size: 15px;
+  }
+
+  .review-item {
+    padding: 10px;
+    border-bottom: 1px solid #bfb5a247;
+  }
+
+  .review-comment, .review-like, .review-star, .review-see-more {
+    font-size: 15px;
+    margin: 0 15px;
+    display: inline-block;
+
+  }
+
+  .review-like {
+    margin-left: 0;
+  }
+  .review-see-more {
+    float: right;
+  }
+
+  #myTab {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  #mypage-user-avatar {
+    width: 200px;
+  }
+
+  #follow-avatar {
+    width: 150px;
+  }
+
+  .personal-info {
+    label {
+      color: gray;
+      font-size: small;
+    }
+  }
+
+  .nav-link {
+    color: #c1c1c1;
+    &.active {
+      border-color: #1d2124 #dee2e6 #fff !important;
+      border-width: 3px 1px 0 !important;
+      border-radius: 0 !important;
+      color: #495057;
+    }
+
+    &:hover {
+      color: #495057;
+      border-radius: 0 !important;
+      border-bottom: none !important;
+    }
+  }
+
+  #edit-user-info {
+    width: 250px;
+    margin-top: 10px;
+  }
 }
