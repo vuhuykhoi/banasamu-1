@@ -21,5 +21,7 @@ class User < ActiveRecord::Base
 validates :name,presence: true
 #validates :email,presence: true
 #validates :password,presence: true
-
+  def following?(other_user)
+    following.include?(other_user)
+  end
 end

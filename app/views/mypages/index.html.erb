@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .logoimg{
+        height: 60px;
+        right: 10px;
+      }
+      
+      .search input[type=text] {
+        padding-bottom: 9px;
+      }
+      #mySidenav a{
+        width: 110px;
+      }
+    </style>
+    <title>My page</title>
 </head>
 
-<body style="font-family:Verdana;color:#aaaaaa;">
-  <div class="contain">
-    <ul class="nav nav-tabs" style="background:#aaff80">
-      <li class="active"><a style="color:black;" data-toggle="tab" href="#home">Home</a></li>
-      <li><a data-toggle="tab" href="#menu1">About</a></li>
-      <li><a data-toggle="tab" href="#menu2">Following</a></li>
-      <li><a data-toggle="tab" href="#menu3">Follower</a></li>
-    </ul>
-  
-    <div class="tab-content text-color">
-      <div id="home" class="tab-pane fade ">
-        <br/><%= render 'form_home_contain' %>
+<body>
+	<div class="mypagebg">
+    <div id="mySidenav">
+      <a class="active" id="green" data-toggle="tab" href="#home">Home</a>
+      <a id="blue" data-toggle="tab" href="#about">About</a>
+      <a id="red"  data-toggle="tab" href="#following">Following</a>
+      <a id="black"  data-toggle="tab" href="#follower">Follower</a>
     </div>
-    <div id="menu1" class="tab-pane fade">
-      <br/><%= render 'form_user_profile_view' %>
+     
+      <div class="tab-content">
+        <div id="home" class="tab-pane active">
+          <br/><%= render 'form_home_contain' %>
+        </div>
+        
+        <div id="about" class="tab-pane fade">
+          <br/><%= render 'form_user_profile_view' %>
+        </div>
+        
+        <div id="following" class="tab-pane fade">
+          <br/><%= render 'form_following_contain' %>
+        </div>
+        
+        <div id="follower" class="tab-pane fade">
+           <br/><%= render 'form_follower_contain' %>
+        </div>
+      </div>
     </div>
-    <div id="menu2" class="tab-pane fade">
-      <br/><%= render 'form_following_contain' %>
-    </div>
-    <div id="menu3" class="tab-pane fade">
-       <br/><%= render 'form_follower_contain' %>
-    </div>
-  </div>
 </body>
 </html>
 
