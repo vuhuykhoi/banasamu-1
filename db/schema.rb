@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20180817075751) do
   end
 
   add_index "ckeditor_assets", ["type"], name: "index_ckeditor_assets_on_type"
-ActiveRecord::Schema.define(version: 20180815090527) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "description"
@@ -63,13 +62,6 @@ ActiveRecord::Schema.define(version: 20180815090527) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "friend_users", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
 
   create_table "images", force: :cascade do |t|
     t.integer  "user_id"
@@ -137,6 +129,7 @@ ActiveRecord::Schema.define(version: 20180815090527) do
     t.integer  "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "photo"
   end
 
   create_table "review_foods", force: :cascade do |t|

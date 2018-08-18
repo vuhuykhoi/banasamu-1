@@ -1,0 +1,29 @@
+#logo-img {
+  height: 40px;
+}
+#navbarSupportedContent {
+  ul:first-child {
+    margin-right: 300px !important;
+  }
+}
+#search-form {
+  input, button {
+    height: 35px;
+    border-radius: 2px;
+  }
+  input {
+    width: 250px;
+    font-size: small;
+  }
+}
+#nav-user-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+.bg-grey {
+  background-color: #e4e4e4;
+}
+.navbar {
+  box-shadow: 0 0.5px 3px grey;
+} 
