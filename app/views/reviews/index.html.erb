@@ -1,7 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-  <p style="color: grey;">search result for "<%=params[:search]%>"</p>
+  <div class="row">
+    <div class="col-8">
+      <p style="color: grey;">search result for "<%=params[:search]%>"</p><%= link_to 'New Review', new_review_path %>
+    </div>
+    
+    <div class="col-4 text-right">
+      <%= link_to '+ New Review', new_review_path, class: 'btn btn-warning'%>
+    </div>
+  </div>
       <% @reviews.each do |r| %>
 	    	<div class="card">
 	    		<div class="card-body">
@@ -78,4 +86,4 @@
       <% end %>
 </div>
 <br>
-<%= link_to 'New Review', new_review_path %>
+
