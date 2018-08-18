@@ -2,8 +2,21 @@
 ホーム画面です。
 
 <% if user_signed_in? %>
-現在 <b><%= current_user.name %></b>さんがログインしています。
-<%else%>
-    <%= link_to"ログイン",new_user_session_path %> 
-    <%= link_to"ユーザー登録",new_user_registration_path %>
-<%end%>
+			<div id="mySidenav" class="sidenav">
+            	<!--image issue-->
+	            <% if @image != nil %>
+	                <%=link_to image_tag('@image.file',:class =>"avatar img-circle",:alt =>"avatar",:width =>"22",:height =>"22"), mypages_path, :id =>"green"%>
+	            <%else%>
+	                <%=link_to image_tag('ava-null.jpg',:class =>"avatar img-circle", :alt =>"avatar", :width =>"22", :height =>"22"), mypages_path, :id =>"green"%>
+	            <%end%>
+				
+				<a href="#" id="blue">other</a>
+	 			<a href="#" id="red">other</a>
+				<%= link_to "Sign out",destroy_user_session_path, method: :delete , :id => "black"%>
+			</div>
+		<%else%>
+			<div id="mySidenav" class="sidenav">
+					<%=link_to "Sign in",new_user_session_path, :id =>"green" %>
+					<%=link_to "Sign up",new_user_registration_path, :id =>"blue" %>
+			</div>
+		<%end%>
