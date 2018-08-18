@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180816065525) do
+ActiveRecord::Schema.define(version: 20180817075751) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
