@@ -1,9 +1,9 @@
 #logo-img {
-  height: 40px;
+  height: 60px;
 }
 #navbarSupportedContent {
   ul:first-child {
-    margin-right: 300px !important;
+    margin-right: 250px !important;
   }
 }
 #search-form {
@@ -21,9 +21,12 @@
   height: 40px;
   margin-right: 10px;
 }
-.bg-grey {
-  background-color: #e4e4e4;
+.btn-outline-white {
+  color: white;
+  border: 1px solid white !important;
+  background-color: transparent;
 }
 .navbar {
   box-shadow: 0 0.5px 3px grey;
+  color: white;
 } 
