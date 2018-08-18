@@ -5,9 +5,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- star -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 	<link rel="stylesheet" href="default.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	
   <title>home</title>
   <style>
     .image {
@@ -43,10 +42,16 @@
   							<span style="color: grey"><%= r.comments.count %></span>
   						</div>
   						<div class="col-4">
-  						  <% r.score.times do %>
+  							<%if r.score !=nil%>
+  								<%start_number = r.score%>
+  							<%else%>
+  								<%start_number = 5%>
+  							<%end%>
+  							
+  						  <% start_number.times do %>
   							<span class="fa fa-star checked"></span>
   							<% end %>
-  							<% (5-r.score).times do %>
+  							<% (5-start_number).times do %>
   							<span class="fa fa-star"></span>
   							<% end %>
   						</div>
