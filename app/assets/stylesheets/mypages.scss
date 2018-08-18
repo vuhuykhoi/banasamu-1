@@ -1,38 +1,16 @@
-.mypage {
-    .checked {
-    color: orange;
-    }
-    
-    .name {
-        font-size: 1.4em;
-        font-weight: 700;
-    }
-    
-    .c-info {
-        padding: 5px 10px;
-        font-size: 1.25em;
-    }
-    
-    .mypagebg{
-        background-color: #ccc;
-    }
-    
-    .card{
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);    
-    }
-    
-    .fa-thumbs-up{
-        color: #2874A6;
-    }
-    .fa-comment{
-        color: #2874A6;
-    }
-    .fa-star{
-        color: grey;
-    }  
+.text-color {
+    color: black!important
 }
 
 
+.checked {
+    color: orange;
+}
+
+.name {
+    font-size: 1.4em;
+    font-weight: 700;
+}
 
 .c-info {
     padding: 5px 10px;
