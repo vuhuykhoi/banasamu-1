@@ -24,4 +24,18 @@ validates :name,presence: true
   def following?(other_user)
     following.include?(other_user)
   end
+  
+  def accurate
+    sum = 0
+    reviews.each do |review|
+      sum += review.score
+    end
+    score = sum/reviews.count.to_f
+    score
+  end
+  
+  def active
+    active = reviews.count
+    active
+  end
 end
