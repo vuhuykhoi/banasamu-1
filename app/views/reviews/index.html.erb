@@ -1,36 +1,90 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Your Reviews</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>User</th>
-      <th>Food</th>
-      <th>Restaurant</th>
-      <th>Score</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td><%= review.title %></td>
-        <td><%== review.description %></td>
-        <td><%= review.user_id %></td>
-        <td><%= review.food_id %></td>
-        <td><%= review.restaurant_id %></td>
-        <td><%= review.score %></td>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <br>
+      <p style="color: grey;">search result for "<%=params[:search]%>"</p>
+    </div>
+    
+    <div class="col-4 text-right">
+      <%= link_to '+ New Review', new_review_path, class: 'btn btn-warning'%>
+    </div>
+  </div>
+      <% @reviews.each do |r| %>
+	    	<div class="card">
+	    		<div class="card-body">
+		    		<div class="row">
+		  				<div class="col-3" style="font-size: 20px; text-align: center;">
+		  					<%= image_tag(r.restaurant.photo, class: "img-fluid", style: "max-height: 180px") %><br>
+		  			  		<a href="#"><%= r.restaurant.name %></a>
+		  				</div>
+		  				
+		  				<div class="col-9">
+		  				  <div class="row">
+		  					  <div class="col-10">  
+		  					    <h4 style="margin: 0 !important;"><%=r.title %></h4>
+		  					  </div>
+		  				
+		  				    <% if current_user == r.user %>
+                    <div class="col-2">
+  		  					    <a href="<%= edit_review_path(r) %>" class="btn btn-info" style="padding: 0;">
+                        <span class="fa fa-edit" style="padding: 5px;"></span>
+                      </a>
+                      <%= link_to image_tag('delete.png', :style =>"padding-bottom: 3px"), r, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', :style =>"padding:0px 4px 0px 4px" %>
+  		  					  </div>
+		  					  <%end%>
+		  					</div>
+		  					<div class="row" style="margin-bottom: 5px;">
+		  						<div class="col-6">
+		  							<span style="color: grey;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;written by <em><%= r.user.name %></em></span>
+		  						</div>
+		  						<div class="col-6" style="text-align: right;">
+		  							<span style="color: grey;">created at <%=r.created_at %> &nbsp;&nbsp;&nbsp;</span>
+		  						</div>
+		  					</div>
+		  					<p style="font-size: 16px; line-height: 22px; max-height: 86px; overflow: hidden;"><%=r.description %></p>
+		  					<div class="container">
+			  					<div class="row" style="font-size: 20px;">
+			  						<div class="col-2">
+			  							<i class="fa fa-thumbs-up"></i>
+			  							<span style="color: grey"><%= r.likes.count %></span>
+			  						</div>
+			  						
+			  						<div class="col-2">
+			  							<i class="fa fa-comment"></i>
+			  							<span style="color: grey"><%= r.comments.count %></span>
+			  						</div>
+			  						
+			  						<div class="col-4">
+			  						  <% if r.score.times !=nil %>
+  			  						  <% r.score.times do %>
+  			  							<span class="fa fa-star checked"></span>
+  			  							<% end %>
+  			  							<% (5-r.score).times do %>
+  			  							<span class="fa fa-star"></span>
+  			  							<% end %>
+  			  						<% else %>
+  			  						  <span class="fa fa-star"></span>
+  			  						  <span class="fa fa-star"></span>
+  			  						  <span class="fa fa-star"></span>
+  			  						  <span class="fa fa-star"></span>
+  			  						  <span class="fa fa-star"></span>
+  			  						<% end %>
+			  						</div>
+			  						
+			  						<div class="col-4 text-right">
+			  						 <%= link_to 'See more >>', r, class: 'btn btn-success' %>
+			  						</div>
+		  
+			  					</div>
+			  				</div>
+			  			</div>
+			  		</div>
+		  		</div>
+	  		</div>
+	  		<br>
+      <% end %>
+</div>
 <br>
-<%= link_to 'New Review', new_review_path %>
+
