@@ -296,7 +296,7 @@
     }
     .panel {
       position:relative;
-      background-color: aliceblue;
+      background-color: #eef0fd;
     }
     .panel>.panel-heading:after,.panel>.panel-heading:before{
       position:absolute;
@@ -338,10 +338,10 @@
     }
     
     .btn-custom {
-      font-size: 0.7rem;
+      font-size: 0.9rem;
       height: 32px;
       line-height: 32px;
-      background-color: #286192;
+      background-color: darkseagreen;
     }
     
     a {
