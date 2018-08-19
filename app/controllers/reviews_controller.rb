@@ -4,7 +4,12 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    @reviews = Review.includes(:restaurant).references(:restaurants).all
+    if params[:search].present?
+      s = "%#{params[:search]}%"
+      @reviews = @reviews.where("title LIKE ? OR restaurants.name LIKE ?", s, s)
+    end
+
   end
 
   # GET /reviews/1
