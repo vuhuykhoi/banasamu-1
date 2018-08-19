@@ -1,0 +1,48 @@
+<div class="container">
+  <!--check id of object f <h1><#%= f.object.id %></h1>-->
+  <div class="row">
+    <div class="col-md-4">
+      <div class="text-center">
+        
+        <% if avatar_url(current_user)=="https://previews.123rf.com/images/stalkerstudent/stalkerstudent1601/stalkerstudent160101173/50961996-user-icon-vector-flat-design-style-eps-10.jpg" %>
+          <% if @friend_user.photo==nil %>
+            <%= image_tag(avatar_url(@friend_user), id: 'mypage-user-avatar') %>
+          <% else %>
+            <%= image_tag(@friend_user.photo, id: 'mypage-user-avatar') %>
+          <% end %>
+        <% else %>
+          <%= image_tag(avatar_url(@friend_user), id: 'mypage-user-avatar') %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-4 personal-info">
+      <form class="form-horizontal" role="form">
+        <!-- email-->
+        <div class="form-group">
+          <label class="control-label">Email</label>
+          <div>
+            <h3 class="user_infomation_text"><%= @friend_user.email %></h3>
+          </div>
+        </div>
+        <!--name-->
+        <div class="form-group">
+          <label class="control-label">Name</label>
+          <div>
+            <h3 class="user_infomation_text"><%= @friend_user.name %></h3>
+          </div>
+        </div>
+
+        <!--Birthday-->
+        <div class="form-group">
+          <label class="control-label">Birthday</label>
+          <div>
+            <h3 class="user_infomation_text"><%= @friend_user.birthday %></h3>
+          </div>
+        </div>
+      </form>
+
+      <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-outline-dark', id: 'edit-user-info' %>
+    </div>
+  </div>
+</div>

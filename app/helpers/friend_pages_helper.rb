@@ -1,0 +1,2 @@
+module FriendPagesHelper
+end

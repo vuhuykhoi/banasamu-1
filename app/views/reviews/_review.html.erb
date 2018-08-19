@@ -8,7 +8,7 @@
     <div class="review-title"><%= r.title %></div>
     <a class="review-user" href="">
       <i class="fas fa-user"></i>
-      <%= current_user.name %>
+      <%= r.user.name %>
     </a>
     <p class="review-description"><%= truncate(r.description, length: 250, separator: ' ') %></p>
     <div>
