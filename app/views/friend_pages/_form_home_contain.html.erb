@@ -1,0 +1,5 @@
+<div class="container">
+  <% @reviews.each do |r| %>
+    <%= render 'reviews/review', r: r %>
+  <% end %>
+</div>
