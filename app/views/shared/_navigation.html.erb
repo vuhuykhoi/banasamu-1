@@ -11,11 +11,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
-      <%= form_tag reviews_path, id: 'search-form', class: 'form-inline my-2 my-lg-0 mr-auto', method: :get do %>
-        <%= text_field_tag :search, params[:search], placeholder: 'Search', class: 'form-control mr-sm-2' %>
-        <%= button_tag nil, class:'btn btn-outline-white my-2 my-sm-0' do %>
-          <i class="fa fa-search" aria-hidden="true"></i>
+      <div class="mr-auto">
+        <%= form_tag reviews_path, id: 'search-form', class: 'form-inline my-2 my-lg-0', method: :get do %>
+          <%= text_field_tag :search, params[:search], placeholder: 'Search', class: 'form-control mr-sm-2' %>
+          <%= button_tag nil, class:'btn btn-outline-white my-2 my-sm-0' do %>
+            <i class="fa fa-search" aria-hidden="true"></i>
+          <% end %>
         <% end %>
+      </div>
+      <%= link_to new_review_path, class: 'btn btn-outline-white' do %>
+        <i class="fa fa-plus"></i> Review
       <% end %>
       <ul class="navbar-nav">
         <% if user_signed_in? %>

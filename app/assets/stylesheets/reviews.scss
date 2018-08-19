@@ -296,6 +296,7 @@
     }
     .panel {
       position:relative;
+      background-color: aliceblue;
     }
     .panel>.panel-heading:after,.panel>.panel-heading:before{
       position:absolute;
@@ -505,3 +506,8 @@
     }
 }
 
+.review-item {
+  img {
+    width: 250px;
+  }
+}
