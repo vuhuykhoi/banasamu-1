@@ -19,8 +19,10 @@
           <% end %>
         <% end %>
       </div>
-      <%= link_to new_review_path, class: 'btn btn-outline-white' do %>
-        <i class="fa fa-plus"></i> Review
+      <% if user_signed_in? %>
+        <%= link_to new_review_path, class: 'btn btn-outline-white' do %>
+          <i class="fa fa-plus"></i> Review
+      <% end %>
       <% end %>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
