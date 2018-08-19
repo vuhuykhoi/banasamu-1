@@ -141,7 +141,15 @@
                         <% @accurate_users.each_with_index do |user,index| %>
                         <% if index<5 %>
                             <div class="media">
-                                <%= image_tag(avatar_url(user), class: "d-flex mr-3 rounded-circle") %>
+                                <% if avatar_url(user)=="https://previews.123rf.com/images/stalkerstudent/stalkerstudent1601/stalkerstudent160101173/50961996-user-icon-vector-flat-design-style-eps-10.jpg" %>
+                                    <% if user.photo==nil %>
+                                        <%= image_tag(avatar_url(user), class: "d-flex mr-3 rounded-circle") %>
+                                    <% else %>
+                                        <%= image_tag(user.photo, class: "d-flex mr-3 rounded-circle") %>
+                                    <% end %>
+                                <% else %>
+                                    <%= image_tag(avatar_url(user), class: "d-flex mr-3 rounded-circle") %>
+                                <% end %>
                                 <div class="media-body">
                                     <div class="news-title">
                                     <h2 class="title-small"><a href="#", style="color: #5a93e2"><%= user.name %></a></h2>
@@ -158,7 +166,15 @@
                         <% @active_users.each_with_index do |user,index| %>
                         <% if index<5 %>
                             <div class="media">
-                                <%= image_tag(avatar_url(user), class: "d-flex mr-3 rounded-circle") %>
+                                <% if avatar_url(user)=="https://previews.123rf.com/images/stalkerstudent/stalkerstudent1601/stalkerstudent160101173/50961996-user-icon-vector-flat-design-style-eps-10.jpg" %>
+                                    <% if user.photo==nil %>
+                                        <%= image_tag(avatar_url(user), class: "d-flex mr-3 rounded-circle") %>
+                                    <% else %>
+                                        <%= image_tag(user.photo, class: "d-flex mr-3 rounded-circle") %>
+                                    <% end %>
+                                <% else %>
+                                    <%= image_tag(avatar_url(user), class: "d-flex mr-3 rounded-circle") %>
+                                <% end %>
                                 <div class="media-body">
                                     <div class="news-title">
                                     <h2 class="title-small"><a href="#", style="color: #5a93e2"><%= user.name %></a></h2>

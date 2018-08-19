@@ -3,7 +3,16 @@
   <div class="row">
     <div class="col-md-4">
       <div class="text-center">
-        <%= image_tag avatar_url(current_user), id: 'mypage-user-avatar' %>
+        
+        <% if avatar_url(current_user)=="https://previews.123rf.com/images/stalkerstudent/stalkerstudent1601/stalkerstudent160101173/50961996-user-icon-vector-flat-design-style-eps-10.jpg" %>
+          <% if current_user.photo==nil %>
+            <%= image_tag(avatar_url(current_user), id: 'mypage-user-avatar') %>
+          <% else %>
+            <%= image_tag(current_user.photo, id: 'mypage-user-avatar') %>
+          <% end %>
+        <% else %>
+          <%= image_tag(avatar_url(current_user), id: 'mypage-user-avatar') %>
+        <% end %>
       </div>
     </div>
 

@@ -1,7 +1,7 @@
 <br>
 <div class="row review-item">
   <div class="col-3" style="font-size: 22px; text-align: center;">
-    <img src="https://images.foody.vn/res/g16/150120/prof/s576x330/foody-mobile-12-jpg-361-636169868619281225.jpg" alt="Banh mi chao" class="image">
+    <%= image_tag(r.restaurant.photo, class: "image") %>
     <a class="review-restaurant" href="<%= restaurant_path(r.restaurant) %>"><%= r.restaurant.name %></a>
   </div>
   <div class="col-9">

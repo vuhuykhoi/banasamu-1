@@ -5,8 +5,21 @@
         <div class="row">
           <div class="col-md-4">
             <div class="text-center">
-              <%= image_tag avatar_url(followed), id: 'follow-avatar' %>
-              <%= render 'follow_form', follower: followed %>
+             
+              <div style="margin-bottom: 10px;">
+              <% if avatar_url(followed)=="https://previews.123rf.com/images/stalkerstudent/stalkerstudent1601/stalkerstudent160101173/50961996-user-icon-vector-flat-design-style-eps-10.jpg" %>
+                                    <% if followed.photo==nil %>
+                                        <%= image_tag(avatar_url(followed), id: 'follow-avatar') %>
+                                    <% else %>
+                                        <%= image_tag(followed.photo, id: 'follow-avatar') %>
+                                    <% end %>
+                                <% else %>
+                                    <%= image_tag(avatar_url(followed), id: 'follow-avatar') %>
+                                <% end %>
+                                </div>
+              <div style="margin-bottom: 30px">
+                <%= render 'follow_form', follower: followed %>
+              </div>                
             </div>
           </div>
           <div class="col-md-4 personal-info">
