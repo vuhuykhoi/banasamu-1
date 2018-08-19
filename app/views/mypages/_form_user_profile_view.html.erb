@@ -37,7 +37,12 @@
         <div class="form-group">
           <label class="control-label">Birthday</label>
           <div>
-            <h3 class="user_infomation_text"><%= current_user.birthday %></h3>
+             <%if current_user.birthday!=nil%>
+            <%bd = current_user.birthday.to_date%>
+            <%else%>
+            <%bd = current_user.birthday%>
+            <%end%>
+            <h3 class="user_infomation_text"><%= bd %></h3>
           </div>
         </div>
       </form>
