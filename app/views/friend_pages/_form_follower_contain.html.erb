@@ -19,7 +19,7 @@
               <div style="margin-bottom: 30px">
                 <%if current_user!=follower %>
               <%= render 'follow_form', follower: follower %>
-               <%=link_to 'Visit',my_friend_pages_path(:id => follower.id),:class => "btn btn-outline-dark"%>
+               <%=link_to 'Visit',my_friend_pages_path(:id => follower.id),:class => "btn btn-outline-dark", :style => "margin-top: 5px"%>
               <%end%>
               </div>
             </div>

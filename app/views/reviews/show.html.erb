@@ -33,8 +33,22 @@
         
         <p>
           <strong>Score:</strong>
-          <div id="score">
-          </div>
+          <div class="review-star">
+        <% if @review.score==nil %>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <% else %>
+        <% @review.score.times do %>
+          <span class="fa fa-star checked"></span>
+        <% end %>
+        <% (5 - @review.score).times do %>
+          <span class="fa fa-star"></span>
+        <% end %>
+        <% end %>
+      </div>
         </p>
         <div class="container-like", style="margin-bottom: 25px">
 

@@ -36,12 +36,15 @@
         <% end %>
         <% end %>
       </div>
+      
       <div class="review-see-more">
+        <% if r.user.id == current_user.id %>
         <%= link_to edit_review_path(r), class: 'btn btn-success' do %>
           <i class="fa fa-edit"></i>
         <% end %>
         <%= link_to review_path(r), method: :delete, class: 'btn btn-danger', 'data-confirm': 'Are you sure?' do %>
           <i class="fa fa-trash-alt"></i>
+        <% end %>
         <% end %>
         <a href="<%= review_path(r) %>" class="btn btn-dark">
           <i class="fa fa-eye"></i>
