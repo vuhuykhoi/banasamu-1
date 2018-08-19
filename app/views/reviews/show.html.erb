@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <% javascript_include_tag "/assets/javascripts/jquery.raty" %>
 <div class="show-review">
   <div class="container post-show">
@@ -71,7 +72,15 @@
                   <% if avatar_url(current_user).nil? %>
                       <img class="img-responsive user-photo" src="http://p3.pstatp.com/large/26ed000043b18dc6c0de">
                   <% else %>
-                      <img class="img-responsive user-photo" src="<%= avatar_url(current_user) %>">
+                      <% if avatar_url(current_user)=="https://previews.123rf.com/images/stalkerstudent/stalkerstudent1601/stalkerstudent160101173/50961996-user-icon-vector-flat-design-style-eps-10.jpg" %>
+                                    <% if current_user.photo==nil %>
+                                        <%= image_tag(avatar_url(current_user), class: "img-responsive user-photo") %>
+                                    <% else %>
+                                        <%= image_tag(current_user.photo, class: "img-responsive user-photo") %>
+                                    <% end %>
+                                <% else %>
+                                    <%= image_tag(avatar_url(current_user), class: "img-responsive user-photo") %>
+                                <% end %>
                   <% end %>
                 </div><!-- /thumbnail -->
               </div><!-- /col-sm-1 -->
@@ -105,7 +114,16 @@
                     <% if avatar_url(review_comment.user).nil? %>
                         <img class="img-responsive user-photo" src="http://p3.pstatp.com/large/26ed000043b18dc6c0de">
                     <% else %>
-                        <img class="img-responsive user-photo" src="<%= avatar_url(review_comment.user) %>">
+                        
+                        <% if avatar_url(review_comment.user)=="https://previews.123rf.com/images/stalkerstudent/stalkerstudent1601/stalkerstudent160101173/50961996-user-icon-vector-flat-design-style-eps-10.jpg" %>
+                                    <% if review_comment.user.photo==nil %>
+                                        <%= image_tag(avatar_url(review_comment.user), class: "img-responsive user-photo") %>
+                                    <% else %>
+                                        <%= image_tag(review_comment.user.photo, class: "img-responsive user-photo") %>
+                                    <% end %>
+                                <% else %>
+                                    <%= image_tag(avatar_url(review_comment.user), class: "img-responsive user-photo") %>
+                                <% end %>
                     <% end %>
                   </div><!-- /thumbnail -->
                 </div><!-- /col-sm-1 -->
