@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
-  before_action :set_like, only: [:show, :edit, :update, :destroy]
+  include LikesHelper
+  before_action :set_like, only: %i[show edit update destroy]
 
   # GET /likes
   # GET /likes.json
@@ -9,7 +10,7 @@ class LikesController < ApplicationController
 
   # GET /likes/1
   # GET /likes/1.json
-  def show
+  def show;
   end
 
   # GET /likes/new
@@ -18,22 +19,29 @@ class LikesController < ApplicationController
   end
 
   # GET /likes/1/edit
-  def edit
+  def edit;
   end
 
   # POST /likes
   # POST /likes.json
   def create
     @like = Like.new(like_params)
-
-    respond_to do |format|
-      if @like.save
-        format.html { redirect_to @like, notice: 'Like was successfully created.' }
-        format.json { render :show, status: :created, location: @like }
-      else
-        format.html { render :new }
-        format.json { render json: @like.errors, status: :unprocessable_entity }
-      end
+    @review_id = like_params[:review_id]
+    @like.user_id = current_user.id
+    @find_like = Like.where(user_id: current_user.id, review_id: @review_id).first
+    if !@find_like
+      @like.save
+      @like_count = @like.review.likes.count
+      render json: {
+          like_count: @like_count,
+          like: @like
+      }
+    else
+      @like_count = @like.review.likes.count
+      render json: {
+          like_count: @like_count,
+          like: @find_like
+      }
     end
   end
 
@@ -42,11 +50,11 @@ class LikesController < ApplicationController
   def update
     respond_to do |format|
       if @like.update(like_params)
-        format.html { redirect_to @like, notice: 'Like was successfully updated.' }
-        format.json { render :show, status: :ok, location: @like }
+        format.html {redirect_to @like, notice: 'Like was successfully updated.'}
+        format.json {render :show, status: :ok, location: @like}
       else
-        format.html { render :edit }
-        format.json { render json: @like.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @like.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -54,21 +62,41 @@ class LikesController < ApplicationController
   # DELETE /likes/1
   # DELETE /likes/1.json
   def destroy
-    @like.destroy
-    respond_to do |format|
-      format.html { redirect_to likes_url, notice: 'Like was successfully destroyed.' }
-      format.json { head :no_content }
+    if !@like
+      puts "khong xoa"
+      @like_count = @like.review.likes.count
+      render json: @like_count
+    else
+      puts "xoa"
+      @like.destroy
+      @like_count = @like.review.likes.count
+      render json: @like_count
+    end
+  end
+
+  def check_delete
+    @find_like = Like.find_by(id: params[:like_id])
+    if !@find_like
+      puts "khong xoa"
+      @like_count = Review.find(params[:review_id]).likes.count
+      render json: @like_count
+    else
+      puts "xoa"
+      @find_like.destroy
+      @like_count = Review.find(params[:review_id]).likes.count
+      render json: @like_count
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_like
-      @like = Like.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def like_params
-      params.require(:like).permit(:user_id, :review_id, :comment_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_like
+    @like = Like.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def like_params
+    params.require(:like).permit(:user_id, :review_id, :comment_id)
+  end
 end
