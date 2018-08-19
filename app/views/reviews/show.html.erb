@@ -1,4 +1,5 @@
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<% javascript_include_tag "/assets/javascripts/jquery.raty" %>
 <div class="show-review">
   <div class="container post-show">
     <div class="row">
@@ -32,7 +33,8 @@
         
         <p>
           <strong>Score:</strong>
-          <div id="score"></div>
+          <div id="score">
+          </div>
         </p>
         <div class="container-like", style="margin-bottom: 25px">
 
@@ -143,10 +145,12 @@
     </div>
   </div>
 </div>
+</script>
 <script>
-  $("#score").raty({
-    path: "/assets/",
-    readonly: true,
-    score: <%= @review.score %>
-  });
+    $(document).on("turbolinks:load",function() {
+        $("#score").raty({
+            path: '/assets/'
+        });
+    })
+
 </script>
