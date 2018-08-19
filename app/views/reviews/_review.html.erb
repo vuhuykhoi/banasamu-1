@@ -21,11 +21,19 @@
         <span style="color: grey"><%= r.comments.count %></span>
       </div>
       <div class="review-star">
+        <% if r.score==nil %>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <% else %>
         <% r.score.times do %>
           <span class="fa fa-star checked"></span>
         <% end %>
         <% (5 - r.score).times do %>
           <span class="fa fa-star"></span>
+        <% end %>
         <% end %>
       </div>
       <div class="review-see-more">
