@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :review_foods
   resources :follows
   resources :likes
+  post 'likes/check_delete'
   resources :votes
   resources :comments
   resources :reviews

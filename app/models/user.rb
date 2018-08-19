@@ -27,10 +27,14 @@ validates :name,presence: true
   
   def accurate
     sum = 0
-    reviews.each do |review|
+    if reviews.count == 0
+      score =0
+    else
+      reviews.each do |review|
       sum += review.score
+      end
+      score = sum/reviews.count.to_f
     end
-    score = sum/reviews.count.to_f
     score
   end
   

@@ -1,83 +1,148 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @review.title %>
-</p>
+<div class="show-review">
+  <div class="container post-show">
+    <div class="row">
+      <div class="col-sm-10 post-header">
+        <p id="notice"><%= notice %></p>
+        
+        <h1 style="color: #8ebb2c"><%= @review.title %></h1>
+        <hr style="height:2px;border:none;color:#333;background-color:#333;" />
+        
+        <p>
+          <strong>Description:</strong>
+          <%== @review.description %>
+        </p>
+        
+        <p>
+          <strong>User:</strong>
+          <%= @review.user_id %>
+        </p>
+        
+        <p>
+          <strong>Food:</strong><br>
+          <% @review.foods.each do |food| %>
+          <%= food.name %><br>
+          <% end %>
+        </p>
+        
+        <p>
+          <strong>Restaurant:</strong>
+          <%= @review.restaurant.name %>
+        </p>
+        
+        <p>
+          <strong>Score:</strong>
+          <div id="score"></div>
+        </p>
+        <div class="container-like", style="margin-bottom: 25px">
 
-<p>
-  <strong>Description:</strong>
-  <%== @review.description %>
-</p>
+            <% if user_signed_in? %>
+                
+                <% if !Like.where(user_id: current_user.id, review_id: @review.id).exists? %>
+                    <div id="like" class="btn-btr icon-btn btn-unlike">
+                      <span id="icon" data-status="like" data-likeid="null" data-reviewid="<%= @review.id %>" data-user="<%= current_user %>" class="icon-unlike fa fa-thumbs-up img-circle text-primary-unlike"></span>
+                      <a class="like-value" data-toggle="modal" data-target="#squarespaceModal"><%= @review.likes.count %>
+                        Like</a>
+                    </div>
+                <% else %>
+                    <div id="like" class="btn-btr icon-btn btn-like">
+                      <span id="icon" data-status="unlike" data-likeid="<%= Like.where(user_id: current_user.id, review_id: @review.id).first.id %>" data-reviewid="<%= @review.id %>" data-user="<%= current_user %>" class="icon-like fa fa-thumbs-up img-circle text-primary-like"></span>
+                      <a class="like-value" data-toggle="modal" data-target="#squarespaceModal"><%= @review.likes.count %>
+                        Like</a>
+                    </div>
+                <% end %>
+            <% else %>
+                <div id="like" class="btn-btr icon-btn btn-unlike">
+                  <span id="icon" data-user="<%= current_user %>" class="icon-unlike glyphicon fa fa-thumbs-up img-circle text-primary-unlike"></span>
+                  <a class="like-value" data-toggle="modal" data-target="#squarespaceModal"><%= @review.likes.count %>
+                    Like</a>
+                </div>
+            <% end %>
+            <a class="btn-btr icon-btn btn-warning", style="color: white", href="<%= edit_review_path(@review) %>"><span class="glyphicon fa fa-edit img-circle"></span>Edit</a>
+            <a class="btn-btr icon-btn btn-danger", style="color: white", href=""><span class="glyphicon fa fa-trash-alt img-circle"></span>Delete</a>
+            <a class="btn-btr icon-btn btn-success", style="color: white", href="<%= reviews_path %>"><span class="glyphicon fa fa-backward img-circle"></span>Back</a>
+          </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @review.user_id %>
-</p>
+<% if user_signed_in? %>
+            <div class="row">
+              <div class="col-sm-1", style="margin-right: 15px">
+                <div class="thumbnail">
+                  <% if avatar_url(current_user).nil? %>
+                      <img class="img-responsive user-photo" src="http://p3.pstatp.com/large/26ed000043b18dc6c0de">
+                  <% else %>
+                      <img class="img-responsive user-photo" src="<%= avatar_url(current_user) %>">
+                  <% end %>
+                </div><!-- /thumbnail -->
+              </div><!-- /col-sm-1 -->
 
-<p>
-  <strong>Food:</strong><br>
-  <% @review.foods.each do |food| %>
-  <%= food.name %><br>
-  <% end %>
-</p>
+              <div class="col-sm-10">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <strong style="font: italic bold 15px/30px Georgia, serif;"><%= current_user.name %></strong>
+                  </div>
+                  <div class="panel-body" style="margin: 10px 0 10px 0">
+                    <%= form_for(@comment) do |f| %>
+                        <div class="field">
+                          <%= f.text_field :description %>
+                          <%= f.hidden_field :review_id, :value => @review.id %>
+                          <button class="btn btn-custom" type="submit">
+                            <%= "Comment" %>
+                          </button>
+                        </div>
+                    <% end %>
+                  </div><!-- /panel-body -->
+                </div><!-- /panel panel-default -->
+              </div><!-- /col-sm-5 -->
+            </div>
+        <% end %>
 
-<p>
-  <strong>Restaurant:</strong>
-  <%= @review.restaurant.name %>
-</p>
+<ul>
+          <% @review.comments.each do |review_comment| %>
+              <div class="row custom-ul">
+                <div class="col-sm-1", style="margin-right: 15px">
+                  <div class="thumbnail">
+                    <% if avatar_url(review_comment.user).nil? %>
+                        <img class="img-responsive user-photo" src="http://p3.pstatp.com/large/26ed000043b18dc6c0de">
+                    <% else %>
+                        <img class="img-responsive user-photo" src="<%= avatar_url(review_comment.user) %>">
+                    <% end %>
+                  </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
+                <div class="col-sm-10">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <strong style="font: italic bold 15px/30px Georgia, serif;"><%= review_comment.user.name %></strong>
+                      <span class="text-muted">commented <%= time_ago_in_words review_comment.created_at %>
+                        ago</span>
+                      <% if user_signed_in? && current_user.id == review_comment.user.id %>
+                          <i class="edit-comment fa fa-edit" style="margin-left: 20px" data-commentid="<%= review_comment.id %>"></i>
+                          <%= link_to comment_path(review_comment), data: {confirm: "Are you sure?"},
+                                      method: :delete do %>
+                              <i class="delete-comment fa fa-trash"></i>
+                          <% end %>
+                      <% end %>
+                    </div>
+                    <div class="panel-body" style="margin: 10px 0 10px 0">
+                      <%= review_comment.description %>
+                    </div><!-- /panel-body -->
 
-<p>
-  <strong>Score:</strong>
-  <div id="score"></div>
-</p>
-
-<p style="padding-left:5px">
-<%= link_to 'Edit',edit_review_path(@review) %> |
-<%= link_to 'Back',reviews_path %>
-</p>
-<style>
-h3 {
-    font-family:verdana
-    }
-.
-</style>
-
-<h3>コメントフォーム</h3>
-<%= form_for(@comment) do |f| %> <div class= "field">
-<%= f.label :comment %><br>
-<%= f.text_field :description %>
-<%= f.hidden_field :review_id, :value => @review.id %>
-</div>
-<div class="actions">
-<%= f.submit %> </div>
-<% end %>
-
-<br>
-<h3>コメント一覧</h3>
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<% @review.comments.each do |comment|%>
- <div class="col-md-10 col-sm-10">
-  <div class="panel panel-default arrow left">
-   <div class="panel-body">
-    <header class="text-left"></header>
-    <img src="../../assets/images/gourmet_website.png" style="float:left;width:75px;height:75px;padding-right:10px"/>
-    <strong><%= comment.user %></strong>
-    <p><%= comment.description %></p>
-    <p style="padding-left:75px;color:gray;"><%= comment.created_at %></p>
+                    <!--Edit comment-->
+                    <div class="edit-comment-content field" style="display: none">
+                      <input type="hidden" name="review-id" value="<%= @review.id %>">
+                      <input name="comment" class="edit-text"></input>
+                      <button class="btn btn-custom btn-edit-comment" type="submit">
+                        <%= "Edit" %>
+                      </button>
+                    </div>
+                  </div><!-- /panel panel-default -->
+                </div><!-- /col-sm-5 -->
+              </div>
+          <% end %>
+        </ul>
+        </div>
     </div>
   </div>
- </div>
-<% end %>
-
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
-
+</div>
 <script>
   $("#score").raty({
     path: "/assets/",
