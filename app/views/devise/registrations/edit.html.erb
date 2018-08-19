@@ -33,7 +33,7 @@
           <div class="form-group">
             <label class="control-label">Email:</label>
             <div>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", :readonly => true,class: 'form-control' %>
             </div>
             <br/>
           </div>
@@ -54,7 +54,7 @@
           <div class="form-group">
             <label class="control-label">Birthday:</label>
             <div>
-              <%= f.datetime_field :birthday, autofocus: true, autocomplete: "birthday", class: 'form-control' %>
+              <%= f.date_field :birthday, autofocus: true, autocomplete: "birthday", class: 'form-control' %>
             </div>
             <br/>
           </div>
@@ -93,10 +93,7 @@
           <!-- Comfirm Button-->
             <div class="actions">
               <%= f.submit "Update", :class => 'btn btn-dark form-control' %>
-              <%= button_to "Cancel Account",
-                            registration_path(resource_name),
-                            data: {confirm: "Are you sure?"},
-                            method: :delete, class: "btn btn-danger", id: 'cancel-account-btn' %>
+             
             </div>
             <br/>
         </form>
@@ -104,4 +101,8 @@
     </div>
 
   <% end %>
+   <%= button_to "Cancel Account",
+                            registration_path(resource_name),
+                            data: {confirm: "Are you sure?"},
+                            method: :delete, class: "btn btn-danger", id: 'cancel-account-btn' %>
 </div>
