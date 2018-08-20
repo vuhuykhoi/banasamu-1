@@ -74,8 +74,10 @@
                     Like</a>
                 </div>
             <% end %>
+            <% if user_signed_in? && current_user.id == @review.user.id %>
             <a class="btn-btr icon-btn btn-warning", style="color: white", href="<%= edit_review_path(@review) %>"><span class="glyphicon fa fa-edit img-circle"></span>Edit</a>
             <a class="btn-btr icon-btn btn-danger", style="color: white", href=""><span class="glyphicon fa fa-trash-alt img-circle"></span>Delete</a>
+            <% end %>
             <a class="btn-btr icon-btn btn-success", style="color: white", href="<%= reviews_path %>"><span class="glyphicon fa fa-backward img-circle"></span>Back</a>
           </div>
 
